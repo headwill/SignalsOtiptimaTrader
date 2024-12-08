@@ -62,13 +62,13 @@ def calcular_sinal(df):
     # Determinar ação com base na variação
     if variacao_percentual > 20:
         action = "⚖️ Comprar agora!"
-        trend_message = f"Previsão de alta acentuada para {symbol}: +{variacao_percentual[0]:.2f}%."
+        trend_message = f"Previsão de alta acentuada para {symbol}: +{variacao_percentual:.2f}%."
     elif variacao_percentual < -20:
         action = "⚖️ Vender agora!"
-        trend_message = f"Previsão de baixa acentuada para {symbol}: {variacao_percentual[0]:.2f}%."
+        trend_message = f"Previsão de baixa acentuada para {symbol}: {variacao_percentual:.2f}%."
     else:
         action = "⚖️ Nenhuma ação recomendada."
-        trend_message = f"Tendência estável para {symbol}: {variacao_percentual[0]:.2f}%."
+        trend_message = f"Tendência estável para {symbol}: {variacao_percentual:.2f}%."
 
     # Montando mensagem final
     message = (
@@ -93,7 +93,7 @@ def calcular_sinal(df):
         "acao": action,
         "preco_inicial_usd": last_close,
         "preco_final_usd": take_profit,
-        "variacao_percentual": variacao_percentual[0],
+        "variacao_percentual": variacao_percentual,
         "lucro_brl": lucro_brl
     }
 
@@ -119,9 +119,8 @@ def enviar_mensagem_telegram(message):
 
 # Mensagem inicial
 mensagem_inicial = (
-    "Investidores, espero poder ajudar vocês como o meu criador me instruiu,\n"
-    "mas lembrem-se, sou apenas um auxílio para as suas negociações. Sem mais delongas...\n\n"
-    "Preparem suas contas, em 1 minuto iniciaremos a negociação."
+ "   Investidores;
+ Preparem suas contas, em 1 minuto iniciaremos a negociação."
 )
 enviar_mensagem_telegram(mensagem_inicial)
 
